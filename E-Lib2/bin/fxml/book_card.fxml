@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox fx:id="box" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleCardClick" prefHeight="330.0" prefWidth="180.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;" styleClass="shadow" stylesheets="@../application/student.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BookCardController">
+   <children>
+      <ImageView fx:id="bookCover_card" fitHeight="252.0" fitWidth="174.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="bookTitle_card" prefHeight="16.0" prefWidth="202.0" text="CYBERNETIC STARGAZER">
+         <font>
+            <Font name="DejaVu Sans Bold" size="13.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+      </Label>
+      <Label fx:id="bookWriter_card" layoutX="17.0" layoutY="336.0" prefHeight="16.0" prefWidth="202.0" text="Shawn Garcia">
+         <font>
+            <Font name="DejaVu Sans Mono" size="12.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+      </Label>
+      <Label fx:id="bookCategory_card" layoutX="17.0" layoutY="359.0" prefHeight="16.0" prefWidth="202.0" text="Sci-fi">
+         <font>
+            <Font name="DejaVu Sans Mono" size="12.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+      </Label>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</VBox>

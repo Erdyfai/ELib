@@ -1,0 +1,9 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.text-field, .password-field {
+    -fx-text-fill: white;
+}
+
+.shadow{
+	-fx-effect:dropshadow(three-pass-box, rgba(0,0,0,0.5), 6,0,0,0); 
+}
+

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="box" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleCardClick" prefHeight="253.0" prefWidth="455.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BorrowedBookCardController">
+   <children>
+      <ImageView fx:id="bookCover_card" fitHeight="229.0" fitWidth="181.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS" />
+      <VBox prefHeight="233.0" prefWidth="233.0">
+         <HBox.margin>
+            <Insets left="25.0" />
+         </HBox.margin>
+         <children>
+            <Label fx:id="bookTitle_card" prefHeight="52.0" prefWidth="179.0" text="CYBERNETIC STARGAZER">
+               <font>
+                  <Font name="DejaVu Sans Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="bookWriter_card" text="Shawn Garcia">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="DejaVu Sans Mono" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="bookCategory_card" text="Sci-fi">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="DejaVu Sans Mono" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="15.0" layoutY="131.0" text="Borrow on date:">
+               <font>
+                  <Font name="DejaVu Sans Mono" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="borrowed_date" layoutX="15.0" layoutY="162.0" text="date">
+               <font>
+                  <Font name="DejaVu Sans Mono" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="15.0" layoutY="178.0" text="Must return it on:">
+               <font>
+                  <Font name="DejaVu Sans Mono" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="return_date" layoutX="15.0" layoutY="174.0" text="date return">
+               <font>
+                  <Font name="DejaVu Sans Mono" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="loanStatus_card" layoutX="89.0" layoutY="126.0" text="Status">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+         <padding>
+            <Insets left="5.0" top="15.0" />
+         </padding>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+   <opaqueInsets>
+      <Insets right="15.0" />
+   </opaqueInsets>
+</HBox>
