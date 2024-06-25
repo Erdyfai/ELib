@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 import dao.BookDAO;
 import dao.UserDAO;
 import dto.BookDTO;
-import dto.BorrowedBookDTO;
 import dto.UserDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -33,7 +32,7 @@ public class AdminController implements Initializable{
     private VBox approveBook_form;
 
     @FXML
-    private VBox approveBook_form1;
+    private VBox returnValidate_form;
 
     @FXML
     private Button approveBtn_menu;
@@ -87,34 +86,31 @@ public class AdminController implements Initializable{
     private TableColumn<BookDTO, Integer> stock_column;
 
     @FXML
-    private TableColumn<BorrowedBookDTO, Integer> studentBookOrder_column;
+    private TableColumn<UserDTO, Integer> studentBookOrder_column;
 
     @FXML
-    private TableColumn<?, ?> studentBorrowBooks_column;
+    private TableColumn<UserDTO, Integer> studentBorrowBooks_column;
 
     @FXML
     private VBox studentDetails_stdForm;
 
     @FXML
-    private TableColumn<?, ?> studentEmail_column;
+    private TableColumn<UserDTO, String> studentEmail_column;
 
     @FXML
-    private TableColumn<?, ?> studentFaculty_column;
+    private TableColumn<UserDTO, String> studentFaculty_column;
 
     @FXML
     private Label studentFaculty_details;
 
     @FXML
-    private TableColumn<?, ?> studentId_column;
-
-    @FXML
     private VBox studentMenu;
 
     @FXML
-    private TableColumn<?, ?> studentName_column;
+    private TableColumn<UserDTO, String> studentName_column;
 
     @FXML
-    private TableColumn<?, ?> studentNim_column;
+    private TableColumn<UserDTO, String> studentNim_column;
 
     @FXML
     private Label studentNim_details;
@@ -123,10 +119,10 @@ public class AdminController implements Initializable{
     private Label studentProgram_details;
 
     @FXML
-    private TableColumn<?, ?> studentSanction_column;
+    private TableColumn<UserDTO, String> studentSanction_column;
 
     @FXML
-    private TableColumn<?, ?> studentStudyProgram_nim;
+    private TableColumn<UserDTO, String> studentStudyProgram_nim;
 
     @FXML
     private TableView<UserDTO> studentTable;
@@ -138,16 +134,25 @@ public class AdminController implements Initializable{
     private Label studetnName_detais;
 
     @FXML
-    private TableColumn<?, ?> title_column;
+    private TableColumn<BookDTO, String> title_column;
 
     @FXML
     private Button validate_btn;
 
     @FXML
-    private TableColumn<?, ?> writer_column;
+    private TableColumn<BookDTO, String> writer_column;
     
     @FXML
     private AnchorPane homeForm;
+    
+    @FXML
+    private Button cancelBtn_iSform;
+    
+    @FXML
+    private Button cancelBtn_approveForm;
+    
+    @FXML
+    private Button cancelBtn_validateForm;
 
     private ObservableList<UserDTO> studentList = FXCollections.observableArrayList();
     private ObservableList<BookDTO> bookList = FXCollections.observableArrayList();
@@ -164,13 +169,13 @@ public class AdminController implements Initializable{
             List<BookDTO> books = bookDAO.selectAllBooks();
             bookList.addAll(books);
 
-            studentId_column.setCellValueFactory(new PropertyValueFactory<>("id"));
             studentName_column.setCellValueFactory(new PropertyValueFactory<>("name"));
             studentEmail_column.setCellValueFactory(new PropertyValueFactory<>("email"));
             studentNim_column.setCellValueFactory(new PropertyValueFactory<>("nim"));
             studentFaculty_column.setCellValueFactory(new PropertyValueFactory<>("faculty"));
             studentStudyProgram_nim.setCellValueFactory(new PropertyValueFactory<>("studyProgram"));
             studentBorrowBooks_column.setCellValueFactory(new PropertyValueFactory<>("borrowedBooks"));
+            studentBookOrder_column.setCellValueFactory(new PropertyValueFactory<>("countBookOrder"));
             studentSanction_column.setCellValueFactory(new PropertyValueFactory<>("sanctions"));
 
             title_column.setCellValueFactory(new PropertyValueFactory<>("title"));
@@ -182,6 +187,29 @@ public class AdminController implements Initializable{
             bookListTable.setItems(bookList);
 
         
+    }
+    
+    @FXML
+    public void switchStudentForm(ActionEvent event) {
+    	if (event.getSource()== imposeSanctionBtn_menu) {
+			imposeSanction_form.setVisible(true);
+			approveBook_form.setVisible(false);
+			returnValidate_form.setVisible(false);
+		} else if(event.getSource()== approveBtn_menu) {
+			imposeSanction_form.setVisible(false);
+			approveBook_form.setVisible(true);
+			returnValidate_form.setVisible(false);
+		}else if(event.getSource()== returnBtn_menu) {
+			imposeSanction_form.setVisible(false);
+			approveBook_form.setVisible(false);
+			returnValidate_form.setVisible(true);
+		}else if(event.getSource()== cancelBtn_iSform) {
+			imposeSanction_form.setVisible(false);
+		}else if(event.getSource()== cancelBtn_approveForm) {
+			approveBook_form.setVisible(false);
+		}else if(event.getSource()== cancelBtn_validateForm) {
+			returnValidate_form.setVisible(false);
+		}
     }
 	
 	@FXML
