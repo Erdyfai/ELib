@@ -22,6 +22,8 @@ public class BorrowedBookDAO {
     
     private static final String UPDATE_BORROW_DURATION = "UPDATE borrowed_books SET borrow_duration = ? WHERE id = ?";
     
+    private static final String COUNT_ORDER_BOOK = "SELECT COUNT(*) FROM borrowed_books WHERE student_id = ? AND borrow_status = ?";
+    
     protected Connection getConnection() {
         Connection connection = null;
         try {
@@ -30,6 +32,25 @@ public class BorrowedBookDAO {
             e.printStackTrace();
         }
         return connection;
+    }
+    
+    public int countBorrowStatus(int studentId, String status) {
+        
+        try (Connection connection = getConnection();
+             PreparedStatement pstmt = connection.prepareStatement(COUNT_ORDER_BOOK)) {
+            
+            pstmt.setInt(1, studentId);
+            pstmt.setString(2, status);
+            
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1);
+                }
+            }
+        } catch (SQLException e) {
+        	printSQLException(e);
+        }
+        return 0;
     }
     
     public void updateBorrowDuration(int borrowedBookId, int newDuration) {
