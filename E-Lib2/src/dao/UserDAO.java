@@ -21,7 +21,8 @@ public class UserDAO {
     
     private static final String SELECT_USER_BY_EMAIL = "select id, name, email, password, telephone, nim, faculty, study_program, borrowed_books, sanctions, user_type, image_path from users where email =?";
     
-    private static final String SELECT_USER_BY_TYPE = "SELECT * FROM users WHERE type = ?";
+    private static final String SELECT_USER_BY_TYPE = "SELECT * FROM users WHERE user_type = ?";
+    
     // Method to get a database connection
     protected Connection getConnection() {
         Connection connection = null;
@@ -89,6 +90,7 @@ public class UserDAO {
                     user.setSanctions(sanctions);
                     user.setUserType(dbUserType);
                     user.setImagePath(imagePath);
+                    user.setCountBookOrder(id);
                     users.add(user);
                 }
             }
